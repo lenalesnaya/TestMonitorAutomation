@@ -1,12 +1,13 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Core.Utilites.Helpers;
-
-public class JsonHelper
+namespace Core.Utilites.Helpers
 {
-    public static JObject FromJson(string json)
+    public class JsonHelper
     {
-        return JsonConvert.DeserializeObject<JObject>(json)!;
+        public static JObject FromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<JObject>(json)!;
+        }
     }
 }

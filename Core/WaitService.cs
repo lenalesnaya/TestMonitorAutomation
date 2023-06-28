@@ -6,13 +6,13 @@ namespace Core
 {
     public class WaitService
     {
-        [ThreadStatic] protected static IWebDriver? _driver;
+        [ThreadStatic] protected static IWebDriver? Driver;
         private WebDriverWait _wait;
 
         public WaitService(IWebDriver? driver)
         {
-            _driver = driver;
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(30));
+            Driver = driver;
+            _wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(30));
         }
 
         public IWebElement GetVisibleElement(By by)
@@ -29,13 +29,13 @@ namespace Core
 
         public IAlert GetAlertOnPage()
         {
-            _wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
+            _wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
             return _wait.Until(ExpectedConditions.AlertIsPresent());
         }
 
         public IWebElement GetExistingElement(By by)
         {
-            var fluentWait = new DefaultWait<IWebDriver?>(_driver);
+            var fluentWait = new DefaultWait<IWebDriver?>(Driver);
             fluentWait.Timeout = TimeSpan.FromSeconds(5);
             fluentWait.PollingInterval = TimeSpan.FromMilliseconds(50);
             fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));

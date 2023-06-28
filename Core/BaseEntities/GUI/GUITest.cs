@@ -9,7 +9,7 @@ namespace Core.BaseEntities.GUI
     [AllureNUnit]
     public abstract class Test
     {
-        protected static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private AllureLifecycle _allure;
 
         [ThreadStatic] protected static Browser? Browser;

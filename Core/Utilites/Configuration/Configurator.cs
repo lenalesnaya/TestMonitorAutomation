@@ -7,12 +7,12 @@ namespace Core.Utilites.Configuration
 {
     public static class Configurator
     {
-        private static readonly Lazy<IConfiguration> s_configuration;
-        public static IConfiguration Configuration => s_configuration.Value;
+        private static readonly Lazy<IConfiguration> _sConfiguration;
+        public static IConfiguration Configuration => _sConfiguration.Value;
 
         static Configurator()
         {
-            s_configuration = new Lazy<IConfiguration>(BuildConfiguration);
+            _sConfiguration = new Lazy<IConfiguration>(BuildConfiguration);
         }
 
         private static IConfiguration BuildConfiguration()
@@ -38,7 +38,6 @@ namespace Core.Utilites.Configuration
             {
                 var appSettings = new AppSettings();
                 var child = Configuration.GetSection("AppSettings");
-
                 appSettings.URL = child["URL"];
 
                 return appSettings;
@@ -49,7 +48,7 @@ namespace Core.Utilites.Configuration
         {
             get
             {
-                List<User?> users = new List<User?>();
+                List<User?> users = new();
                 var child = Configuration.GetSection("Users");
                 foreach (var section in child.GetChildren())
                 {
@@ -72,9 +71,9 @@ namespace Core.Utilites.Configuration
             }
         }
 
-        public static User? Admin => Users.Find(x => x?.UserType == UserType.Admin);
+        public static User? Admin => Users.Find(u => u?.UserType == UserType.Admin);
 
-        public static User? UserByUsername(string username) => Users.Find(x => x?.Username == username);
+        public static User? UserByUsername(string username) => Users.Find(u => u?.Username == username);
 
         public static string? BrowserType => Configuration[nameof(BrowserType)];
     }

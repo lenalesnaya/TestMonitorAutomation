@@ -1,7 +1,8 @@
-namespace Core.Models.Abstractions;
-
-public enum UserType
+namespace Core.Models.Abstractions
 {
-    Admin,
-    User
+    public enum UserType
+    {
+        Admin,
+        User
+    }
 }

@@ -18,7 +18,6 @@ namespace Core.Clients
                     Configurator.Admin!.Username!, Configurator.Admin.Password!),
                 ThrowOnAnyError = true,
                 MaxTimeout = 10000,
-
             };
 
             _restClient = new RestClient(options);

@@ -1,10 +1,11 @@
 using Core.Models.Abstractions;
 
-namespace Core.Models;
-
-public record User
+namespace Core.Models
 {
-    public UserType UserType { get; set; }
-    public string? Username { get; init; } = string.Empty;
-    public string? Password { get; init; } = string.Empty;
+    public record User
+    {
+        public UserType UserType { get; set; }
+        public string? Username { get; init; } = string.Empty;
+        public string? Password { get; init; } = string.Empty;
+    }
 }

@@ -4,11 +4,11 @@ namespace Core.BaseEntities.API
 {
     internal class APIService
     {
-        protected ApiClient _apiClient;
+        protected ApiClient ApiClient;
 
         public APIService(ApiClient apiClient)
         {
-            _apiClient = apiClient;
+            ApiClient = apiClient;
         }
     }
 }

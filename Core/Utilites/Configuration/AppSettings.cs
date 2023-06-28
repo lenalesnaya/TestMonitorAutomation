@@ -1,6 +1,7 @@
-namespace Core.Utilites.Configuration;
-
-public class AppSettings
+namespace Core.Utilites.Configuration
 {
-    public string? URL { get; set; }
+    public class AppSettings
+    {
+        public string? URL { get; set; }
+    }
 }

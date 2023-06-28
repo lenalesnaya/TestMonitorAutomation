@@ -5,13 +5,13 @@ namespace Core.BaseEntities.API
 {
     internal class APITest
     {
-        protected static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-        protected ApiClient _apiClient;
+        protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+        protected ApiClient ApiClient;
 
         [OneTimeSetUp]
         public void InitApiClient()
         {
-            _apiClient = new ApiClient();
+            ApiClient = new ApiClient();
         }
     }
 }

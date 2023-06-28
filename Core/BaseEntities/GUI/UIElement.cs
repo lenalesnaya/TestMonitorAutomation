@@ -7,98 +7,12 @@ namespace Core.BaseEntities.GUI
 {
     public class UIElement : IWebElement
     {
-        private IWebElement _webElementImplementation;
-        private By? _selector;
-        private IWebDriver? _driver;
-        private Actions _actions;
+        private readonly IWebElement _webElementImplementation;
+        private readonly By? _selector;
+        private readonly Actions _actions;
+
+        [ThreadStatic] private static IWebDriver? _driver;
         protected WaitService _waitService;
-        
-        public UIElement(IWebDriver? webDriver, By @by)
-        {
-            _selector = by;
-            _driver = webDriver;
-            _waitService = new WaitService(webDriver);
-            _actions = new Actions(webDriver);
-            _webElementImplementation = webDriver!.FindElement(by);
-        }
-
-        public UIElement(IWebDriver? webDriver, IWebElement webElement)
-        {
-            _webElementImplementation = webElement;
-            _driver = webDriver;
-            _waitService = new WaitService(webDriver);
-            _actions = new Actions(webDriver);
-        }
-        
-        public IWebElement FindElement(By @by)
-        {
-            return _webElementImplementation.FindElement(@by);
-        }
-
-        public ReadOnlyCollection<IWebElement> FindElements(By @by)
-        {
-            return _webElementImplementation.FindElements(@by);
-        }
-
-        public void Clear()
-        {
-            _webElementImplementation.Clear();
-        }
-
-        public void SendKeys(string text)
-        {
-            _webElementImplementation.SendKeys(text);
-        }
-
-        public void Submit()
-        {
-            _webElementImplementation.Submit();
-        }
-
-        public void Click()
-        {
-            _webElementImplementation.Click();
-        }
-
-        public string GetAttribute(string attributeName)
-        {
-            return _webElementImplementation.GetAttribute(attributeName);
-        }
-
-        public string GetDomAttribute(string attributeName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetDomProperty(string propertyName)
-        {
-            return _webElementImplementation.GetDomProperty(propertyName);
-        }
-        
-        public string GetCssValue(string propertyName)
-        {
-            return _webElementImplementation.GetCssValue(propertyName);
-        }
-
-        public ISearchContext GetShadowRoot()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Hover()
-        {
-            _actions.MoveToElement(_webElementImplementation).Build().Perform();
-        }
-
-        public void ContextClickToElement() =>
-            new Actions(_driver)
-              .MoveToElement(_webElementImplementation)
-              .ContextClick()
-              .Build()
-              .Perform();
-
-        public void AcceptAlert() =>
-            _driver!.SwitchTo().Alert().Accept();
 
         public string TagName => _webElementImplementation.TagName;
 
@@ -113,5 +27,68 @@ namespace Core.BaseEntities.GUI
         public Size Size => _webElementImplementation.Size;
 
         public bool Displayed => _waitService.GetVisibleElement(_selector!).Displayed;
+
+        public UIElement(IWebDriver? driver, By @by)
+        {
+            _selector = by;
+            _driver = driver;
+            _waitService = new WaitService(driver);
+            _actions = new Actions(driver);
+            _webElementImplementation = driver!.FindElement(by);
+        }
+
+        public UIElement(IWebDriver? driver, IWebElement webElement)
+        {
+            _webElementImplementation = webElement;
+            _driver = driver;
+            _waitService = new WaitService(driver);
+            _actions = new Actions(driver);
+        }
+
+        public IWebElement FindElement(By @by) =>
+            _webElementImplementation.FindElement(@by);
+
+        public ReadOnlyCollection<IWebElement> FindElements(By @by) =>
+            _webElementImplementation.FindElements(@by);
+
+        public void Clear() =>
+            _webElementImplementation.Clear();
+
+        public void SendKeys(string text) =>
+            _webElementImplementation.SendKeys(text);
+
+        public void Submit() =>
+            _webElementImplementation.Submit();
+
+        public void Click() =>
+            _webElementImplementation.Click();
+
+        public string GetAttribute(string attributeName) =>
+            _webElementImplementation.GetAttribute(attributeName);
+
+        public string GetDomAttribute(string attributeName) =>
+            _webElementImplementation.GetDomAttribute(attributeName);
+
+        public string GetDomProperty(string propertyName) =>
+            _webElementImplementation.GetDomProperty(propertyName);
+
+        public string GetCssValue(string propertyName) =>
+            _webElementImplementation.GetCssValue(propertyName);
+
+        public ISearchContext GetShadowRoot() =>
+            _webElementImplementation.GetShadowRoot();
+
+        public void Hover() =>
+            _actions.MoveToElement(_webElementImplementation).Build().Perform();
+
+        public void ContextClickToElement() =>
+            new Actions(_driver)
+              .MoveToElement(_webElementImplementation)
+              .ContextClick()
+              .Build()
+              .Perform();
+
+        public void AcceptAlert() =>
+            _driver!.SwitchTo().Alert().Accept();
     }
 }

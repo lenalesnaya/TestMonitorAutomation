@@ -6,10 +6,10 @@ namespace Core.BaseEntities.GUI
 {
     public abstract class Page
     {
-        protected static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+        protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         [ThreadStatic] protected static IWebDriver? Driver;
-        protected static int WaitForPageLoadingTime = 60;
+        protected const int WaitForPageLoadingTime = 60;
 
         protected abstract string EndPoint { get; }
 
