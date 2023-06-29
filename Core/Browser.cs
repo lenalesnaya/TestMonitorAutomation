@@ -21,11 +21,11 @@ namespace Core
             if (Driver != null) Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(0);
         }
 
-        public object? ExecuteScript(string script)
+        public static object? ExecuteScript(IWebDriver driver, string script)
         {
             try
             {
-                return ((IJavaScriptExecutor)Driver!).ExecuteScript(script);
+                return ((IJavaScriptExecutor)driver).ExecuteScript(script);
             }
             catch
             {

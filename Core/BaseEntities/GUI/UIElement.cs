@@ -54,24 +54,9 @@ namespace Core.BaseEntities.GUI
         public void Clear() =>
             _webElementImplementation.Clear();
 
-        // !Selected?
         public void SendKeys(string text)
         {
-            if (!Displayed)
-            {
-                _actions.ScrollToElement(_webElementImplementation);
-            }
-
-            try
-            {
-                _webElementImplementation.SendKeys(text);
-            }
-            catch
-            {
-                _webElementImplementation.Click();
-                _webElementImplementation.SendKeys(text);
-            }
-            
+            _webElementImplementation.SendKeys(text);
         }
 
         public void Submit() =>
