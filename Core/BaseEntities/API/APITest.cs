@@ -8,7 +8,7 @@ namespace Core.BaseEntities.API
         protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         protected ApiClient ApiClient;
 
-        [OneTimeSetUp]
+        [SetUp]
         public void InitApiClient()
         {
             ApiClient = new ApiClient();

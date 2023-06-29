@@ -12,7 +12,7 @@ namespace Core.BaseEntities.GUI
         private readonly Actions _actions;
 
         [ThreadStatic] private static IWebDriver? _driver;
-        protected WaitService _waitService;
+        protected WaitService WaitService;
 
         public string TagName => _webElementImplementation.TagName;
 
@@ -26,13 +26,13 @@ namespace Core.BaseEntities.GUI
 
         public Size Size => _webElementImplementation.Size;
 
-        public bool Displayed => _waitService.GetVisibleElement(_selector!).Displayed;
+        public bool Displayed => WaitService.GetVisibleElement(_selector!).Displayed;
 
         public UIElement(IWebDriver? driver, By @by)
         {
             _selector = by;
             _driver = driver;
-            _waitService = new WaitService(driver);
+            WaitService = new WaitService(driver);
             _actions = new Actions(driver);
             _webElementImplementation = driver!.FindElement(by);
         }
@@ -41,7 +41,7 @@ namespace Core.BaseEntities.GUI
         {
             _webElementImplementation = webElement;
             _driver = driver;
-            _waitService = new WaitService(driver);
+            WaitService = new WaitService(driver);
             _actions = new Actions(driver);
         }
 
@@ -54,14 +54,38 @@ namespace Core.BaseEntities.GUI
         public void Clear() =>
             _webElementImplementation.Clear();
 
-        public void SendKeys(string text) =>
-            _webElementImplementation.SendKeys(text);
+        // !Selected?
+        public void SendKeys(string text)
+        {
+            if (!Displayed)
+            {
+                _actions.ScrollToElement(_webElementImplementation);
+            }
+
+            try
+            {
+                _webElementImplementation.SendKeys(text);
+            }
+            catch
+            {
+                _webElementImplementation.Click();
+                _webElementImplementation.SendKeys(text);
+            }
+            
+        }
 
         public void Submit() =>
             _webElementImplementation.Submit();
 
-        public void Click() =>
+        public void Click()
+        {
+            if (!Displayed)
+            {
+                _actions.ScrollToElement(_webElementImplementation);
+            }
+
             _webElementImplementation.Click();
+        }
 
         public string GetAttribute(string attributeName) =>
             _webElementImplementation.GetAttribute(attributeName);
