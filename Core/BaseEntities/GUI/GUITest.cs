@@ -3,8 +3,6 @@ using NLog;
 using NUnit.Allure.Core;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
-[assembly: Parallelizable(ParallelScope.All)]
-[assembly: LevelOfParallelism(4)]
 
 namespace Core.BaseEntities.GUI
 {
