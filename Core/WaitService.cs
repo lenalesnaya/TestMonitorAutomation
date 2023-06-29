@@ -27,13 +27,7 @@ namespace Core
             }
         }
 
-        public IAlert GetAlertOnPage()
-        {
-            _wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
-            return _wait.Until(ExpectedConditions.AlertIsPresent());
-        }
-
-        public IWebElement GetExistingElement(By by)
+        public IWebElement GetVisibleElementByFluentWait(By by)
         {
             var fluentWait = new DefaultWait<IWebDriver?>(Driver);
             fluentWait.Timeout = TimeSpan.FromSeconds(5);
