@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="TestData\" />
     <Folder Include="Steps\" />
     <Folder Include="Pages\" />
