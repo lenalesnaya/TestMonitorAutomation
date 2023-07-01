@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestData\" />
     <Folder Include="Steps\" />
     <Folder Include="Pages\" />
     <Folder Include="Services\API\" />
@@ -36,6 +35,18 @@
 		</Content>
 		<None Remove="allureConfig.json" />
 		<Content Include="allureConfig.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<None Remove="TestData\StandartProject.json" />
+		<Content Include="TestData\StandartProject.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<None Remove="TestData\StandartTestCase.json" />
+		<Content Include="TestData\StandartTestCase.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<None Remove="TestData\StandartTestSuite.json" />
+		<Content Include="TestData\StandartTestSuite.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 		<None Remove="NLog.config" />
