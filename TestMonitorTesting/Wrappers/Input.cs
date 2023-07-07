@@ -7,9 +7,20 @@ namespace TestMonitorTesting.Wrappers
     {
         private UIElement _uiElement;
 
+        public string Text => _uiElement.Text;
+
+        public bool Displayed => _uiElement.Displayed;
+
+        public bool Enabled => _uiElement.Enabled;
+
         public Input(IWebDriver? driver, By @by)
         {
             _uiElement = new UIElement(driver, @by);
+        }
+
+        public Input(IWebDriver? driver, IWebElement webElement)
+        {
+            _uiElement = new UIElement(driver, webElement);
         }
 
         public void Write(string text)
@@ -23,10 +34,7 @@ namespace TestMonitorTesting.Wrappers
 
         public void Clear() => _uiElement.Clear();
 
-        public string Text => _uiElement.Text;
-
-        public bool Displayed => _uiElement.Displayed;
-
-        public bool Enabled => _uiElement.Enabled;
+        public string GetAttribute(string attributeName) =>
+            _uiElement.GetAttribute(attributeName);
     }
 }

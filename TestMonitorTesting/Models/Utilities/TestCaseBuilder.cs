@@ -11,24 +11,35 @@ namespace TestMonitorTesting.Models.Utilities
             _testCase = new TestCase();
         }
 
+        public static TestCase StandartTestCase =>
+            TestDataHelper.GetTestEntity<TestCase>("StandartTestCase");
+
+
         public static TestCase GetStandartTestCase(int testSuiteId)
         {
-            var testCase = TestDataHelper.GetTestEntity<TestCase>("StandartTestCase");
+            var testCase = StandartTestCase;
             testCase.TestSuiteId = testSuiteId;
 
             return testCase;
         }
 
-        public static TestCase GetRandomTestCase(int testSuiteId) => new()
+        public static TestCase RandomTestCase => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
-            TestSuiteId = testSuiteId,
             Duration = new Random().Next(1, 60),
             ExpectedResult = FakerHelper.Faker.Lorem.Sentences(),
             TestData = FakerHelper.Faker.Lorem.Sentences(),
             Preconditions = FakerHelper.Faker.Lorem.Sentences(),
             Instructions = GetInstructions()
         };
+
+        public static TestCase GetRandomTestCase(int testSuiteId)
+        {
+            var testCase = RandomTestCase;
+            testCase.TestSuiteId = testSuiteId;
+
+            return testCase;
+        }
 
         private static List<string> GetInstructions()
         {

@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 namespace Core.BaseEntities.GUI
 {
     [AllureNUnit]
-    public abstract class Test
+    public abstract class GUITest
     {
         protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         private AllureLifecycle _allure;

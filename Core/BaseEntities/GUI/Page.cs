@@ -9,6 +9,7 @@ namespace Core.BaseEntities.GUI
         protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
 
         [ThreadStatic] protected static IWebDriver? Driver;
+        protected WaitService? WaitService;
         protected const int WaitForPageLoadingTime = 60;
 
         protected abstract string EndPoint { get; }
@@ -16,6 +17,7 @@ namespace Core.BaseEntities.GUI
         public Page(IWebDriver? driver, bool openPageByUrl)
         {
             Driver = driver;
+            WaitService = new WaitService(driver);
 
             if (openPageByUrl)
             {
@@ -27,21 +29,22 @@ namespace Core.BaseEntities.GUI
         {
             Driver!.Navigate().GoToUrl(Configurator.AppSettings.URL + EndPoint);
             WaitForOpen();
+            Logger.Info($"Go to {this}");
         }
 
-        protected void WaitForOpen()
+        public void WaitForOpen()
         {
             var secondsCounter = 0;
             var isPageOpenedIndicator = IsPageOpened();
 
-            while (isPageOpenedIndicator && secondsCounter < WaitForPageLoadingTime)
+            while (!isPageOpenedIndicator && secondsCounter < WaitForPageLoadingTime)
             {
                 Thread.Sleep(1000);
                 secondsCounter++;
                 isPageOpenedIndicator = IsPageOpened();
             }
 
-            if (isPageOpenedIndicator)
+            if (!isPageOpenedIndicator)
             {
                 throw new AssertionException("Page was not opened.");
             }

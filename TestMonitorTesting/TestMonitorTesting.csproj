@@ -21,11 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Steps\" />
-    <Folder Include="Pages\" />
     <Folder Include="Services\API\" />
     <Folder Include="Tests\API\" />
-    <Folder Include="Tests\GUI\" />
   </ItemGroup>
 
 	<ItemGroup>
@@ -51,6 +48,10 @@
 		</Content>
 		<None Remove="NLog.config" />
 		<Content Include="NLog.config">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<None Remove="TestData\Images\ava.jpg" />
+		<Content Include="TestData\Images\ava.jpg">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
