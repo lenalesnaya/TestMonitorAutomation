@@ -44,6 +44,7 @@ namespace Core.Utilites.Configuration
             }
         }
 
+
         public static List<User?> Users
         {
             get
@@ -55,7 +56,8 @@ namespace Core.Utilites.Configuration
                     var user = new User
                     {
                         Password = section["Password"],
-                        Username = section["Username"]
+                        Username = section["Username"],
+                        JWT = section["JWT"]
                     };
                     user.UserType = section["UserType"]?.ToLower() switch
                     {

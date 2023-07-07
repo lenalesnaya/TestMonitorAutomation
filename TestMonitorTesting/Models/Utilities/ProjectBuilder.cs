@@ -18,8 +18,9 @@ namespace TestMonitorTesting.Models.Utilities
         {
             Name = FakerHelper.Faker.Lorem.Word() + " project.",
             Description = FakerHelper.Faker.Lorem.Sentences(),
-            StartsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString(),
-            EndsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString()
+            //StartsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString(),
+            //EndsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString(),
+            SymbolId = 1
         };
 
         public ProjectBuilder SetName(string name)
@@ -43,61 +44,61 @@ namespace TestMonitorTesting.Models.Utilities
             return this;
         }
 
-        public ProjectBuilder SetStartsAt(string startsAt)
-        {
-            _project.StartsAt = startsAt;
+        //public ProjectBuilder SetStartsAt(string startsAt)
+        //{
+        //    _project.StartsAt = startsAt;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetEndsAt(string endsAt)
-        {
-            _project.EndsAt = endsAt;
+        //public ProjectBuilder SetEndsAt(string endsAt)
+        //{
+        //    _project.EndsAt = endsAt;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetUsesApplications(bool usesApplications)
-        {
-            _project.UsesApplications = usesApplications;
+        //public ProjectBuilder SetUsesApplications(bool usesApplications)
+        //{
+        //    _project.UsesApplications = usesApplications;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetUsesRequirements(bool usesRequirements)
-        {
-            _project.UsesRequirements = usesRequirements;
+        //public ProjectBuilder SetUsesRequirements(bool usesRequirements)
+        //{
+        //    _project.UsesRequirements = usesRequirements;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetUsesRisks(bool usesRisks)
-        {
-            _project.UsesRisks = usesRisks;
+        //public ProjectBuilder SetUsesRisks(bool usesRisks)
+        //{
+        //    _project.UsesRisks = usesRisks;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetUsesIssues(bool usesIssues)
-        {
-            _project.UsesIssues = usesIssues;
+        //public ProjectBuilder SetUsesIssues(bool usesIssues)
+        //{
+        //    _project.UsesIssues = usesIssues;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetUsesMessages(bool usesMessages)
-        {
-            _project.UsesMessages = usesMessages;
+        //public ProjectBuilder SetUsesMessages(bool usesMessages)
+        //{
+        //    _project.UsesMessages = usesMessages;
 
-            return this;
-        }
+        //    return this;
+        //}
 
-        public ProjectBuilder SetCompleted(bool completed)
-        {
-            _project.Completed = completed;
+        //public ProjectBuilder SetCompleted(bool completed)
+        //{
+        //    _project.Completed = completed;
 
-            return this;
-        }
+        //    return this;
+        //}
 
         public Project Build()
         {
