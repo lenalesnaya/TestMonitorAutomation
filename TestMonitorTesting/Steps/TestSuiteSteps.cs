@@ -16,19 +16,19 @@ namespace TestMonitorTesting.Steps
             new ProjectSteps(Driver)
                 .CreateSimpleStandartProject()
                 .Header.ClickProjectsLink()
-                .OpenLastAddedProject(ProjectBuilder.StandartProject.Name)
+                .OpenLastAddedProject(ProjectBuilder.StandartProjectData.Name)
                 .ClickTestSuitesLink()
                 .ClickAddTestSuiteButton()
-                .CreateTestSuite(TestSuiteBuilder.StandartTestSuite);
+                .CreateTestSuite(TestSuiteBuilder.StandartTestSuiteData);
 
         [AllureStep("Create test suite.")]
-        public TestSuitesPage CreateTestSuite(TestSuite testSuite) =>
+        public TestSuitesPage CreateTestSuite(TestSuiteData testSuiteData) =>
             new ProjectSteps(Driver)
             .CreateSimpleStandartProject()
             .Header.ClickProjectsLink()
-            .OpenLastAddedProject(ProjectBuilder.StandartProject.Name)
+            .OpenLastAddedProject(ProjectBuilder.StandartProjectData.Name)
             .ClickTestSuitesLink()
             .ClickAddTestSuiteButton()
-            .CreateTestSuite(testSuite);
+            .CreateTestSuite(testSuiteData);
     }
 }

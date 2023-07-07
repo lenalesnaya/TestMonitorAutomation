@@ -20,52 +20,59 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Adding of a project with random values.")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("Any user")]
+        [AllureSuite("API")]
+        [AllureSubSuite("ProjectAPITests")]
         [SmokeTest]
         public void AddProject()
         {
-            var newProject = ProjectBuilder.GetRandomProject();
+            var newProject = new Project()
+            {Data = ProjectBuilder.GetRandomProjectData() };
+
             var addedProject = HandleProjectAdding(newProject);
 
             Assert.Multiple(() =>
             {
-                Assert.That(newProject.Name, Is.EqualTo(addedProject!.Name));
+                Assert.That(newProject.Data.Name, Is.EqualTo(addedProject!.Data.Name));
             });
         }
 
         [Test, Category("Positive"), Description("Getting of recently added project.")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("Any user")]
+        [AllureSuite("API")]
+        [AllureSubSuite("ProjectAPITests")]
         [SmokeTest]
         public void GetProject()
         {
-            var addedProject = HandleProjectAdding(ProjectBuilder.StandartProject);
-            var receivedProject = _projectService.GetProject<Project>(addedProject!.Id);
+            var addedProject = HandleProjectAdding(
+                new Project() { Data = ProjectBuilder.StandartProjectData });
+
+            var receivedProject = _projectService.GetProject<Project>(addedProject!.Data.Id);
             Logger.Info("Received object! " + receivedProject);
 
             Assert.Multiple(() =>
             {
-                Assert.That(receivedProject.Name, Is.EqualTo("Standart project."));
+                Assert.That(receivedProject.Data.Name, Is.EqualTo(addedProject.Data.Name));
             });
         }
 
         [Test, Category("Negative"), Description("Getting of an unexisted project.")]
+        [AllureSeverity(SeverityLevel.normal)]
+        [AllureOwner("Any user")]
+        [AllureSuite("API")]
+        [AllureSubSuite("ProjectAPITests")]
         [Regression]
         public void GetUnexistedProject()
         {
-            var addedProject = HandleProjectAdding(ProjectBuilder.StandartProject);
-            try
-            {
-                _projectService.GetProject(addedProject!.Id + 1000);
-                Assert.Fail();
-            }
-            catch (HttpRequestException ex)
-            {
-                Logger.Info(ex.Message);
-                Assert.Pass();
-            }
-            catch (Exception ex)
-            {
-                Logger.Info(ex.Message);
-                Assert.Fail();
-            }
+            var addedProject = HandleProjectAdding(
+                new Project() { Data = ProjectBuilder.StandartProjectData });
+
+            var response = _projectService.GetProject(addedProject!.Data.Id * 1000);
+            Logger.Info(response.StatusCode);
+
+            Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.NotFound));
         }
 
         public Project? HandleProjectAdding(Project project)

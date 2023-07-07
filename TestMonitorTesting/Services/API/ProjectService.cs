@@ -15,7 +15,7 @@ namespace TestMonitorTesting.Services.API
         public RestResponse AddProject(Project newProject)
         {
             var request = new RestRequest(AddProjectEndpoint, Method.Post)
-                .AddBody(newProject);// AddJsonBody
+                .AddBody(newProject.Data);// AddJsonBody
 
             return ApiClient.Execute(request);
         }
@@ -24,7 +24,7 @@ namespace TestMonitorTesting.Services.API
             where ProjectType : Project, new()
         {
             var request = new RestRequest(AddProjectEndpoint, Method.Post)
-                .AddBody(newProject);// AddJsonBody
+                .AddBody(newProject.Data);// AddJsonBody
 
             return ApiClient.Execute<ProjectType>(request);
         }

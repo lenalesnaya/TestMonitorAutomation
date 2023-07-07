@@ -18,8 +18,8 @@ namespace TestMonitorTesting.Tests.GUI
         [Test, Category("Positive"), Description("Adding of the standart test suite.")]
         [AllureSeverity(SeverityLevel.critical)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [SmokeTest]
         public void CreateTestSuite_WithStandartData()
         {
@@ -27,28 +27,28 @@ namespace TestMonitorTesting.Tests.GUI
                 new TestSuiteSteps(Browser!.Driver).CreateStandartTestSuite();
 
                 Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
-                    TestSuiteBuilder.StandartTestSuite.Name),
+                    TestSuiteBuilder.StandartTestSuiteData.Name),
                     Is.True);
         }
 
         [Test, Category("Positive"), Description("Deleting of just added test suite.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [SmokeTest]
         public void DeleteTestSuite()
         {
-            var randomTestSuite = TestSuiteBuilder.RandomTestSuite;
+            var randomTestSuiteData = TestSuiteBuilder.RandomTestSuiteData;
             var testSuitesPage =
-                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(randomTestSuite);
+                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(randomTestSuiteData);
 
-            testSuitesPage.OpenTestSuitePage(randomTestSuite.Name)
+            testSuitesPage.OpenTestSuitePage(randomTestSuiteData.Name)
                 .DeleteTestSuite();
 
             try
             {
-                testSuitesPage.GetLastAddedTestSuiteLink(randomTestSuite.Name);
+                testSuitesPage.GetLastAddedTestSuiteLink(randomTestSuiteData.Name);
                 Assert.That(false);
             }
             catch (NoSuchElementException ex)
@@ -67,16 +67,17 @@ namespace TestMonitorTesting.Tests.GUI
             "Adding of a test suite with positive low limit values of test suite name field.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_WithNameFieldPositiveLowLimitValue()
         {
             var fakeName = FakerHelper.GetAlphabeticStringRandomValue(
                 CreateTestSuiteModalWindow.MinLimitSuiteNameValue);
+            var newTestSuiteData = new TestSuiteData { Name = fakeName };
+
             var testSuitesPage =
-                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(
-                    new TestSuite() { Name = fakeName });
+                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(newTestSuiteData);
 
             Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
                 fakeName),
@@ -87,16 +88,17 @@ namespace TestMonitorTesting.Tests.GUI
             "Adding of a test suite with positive high limit values of test suite name field.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_WithNameFieldPositiveHighLimitValue()
         {
             var fakeName = FakerHelper.GetAlphabeticStringRandomValue(
                 CreateTestSuiteModalWindow.MaxLimitSuiteNameValue);
+            var newTestSuiteData = new TestSuiteData { Name = fakeName };
+
             var testSuitesPage =
-                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(
-                    new TestSuite() { Name = fakeName });
+                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(newTestSuiteData);
 
             Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
                 fakeName),
@@ -107,8 +109,8 @@ namespace TestMonitorTesting.Tests.GUI
             "Check of the popup message 'Test suite <test suite name> created'.")]
         [AllureSeverity(SeverityLevel.minor)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_CheckPopUpMessage()
         {
@@ -123,15 +125,15 @@ namespace TestMonitorTesting.Tests.GUI
             "Check of the dialog window 'Add test suite' closing.")]
         [AllureSeverity(SeverityLevel.minor)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_CheckDialogWindow()
         {
             var createTestSuiteModalWindow = new ProjectSteps(Browser!.Driver)
                  .CreateSimpleStandartProject()
                  .Header.ClickProjectsLink()
-                 .OpenLastAddedProject(ProjectBuilder.StandartProject.Name)
+                 .OpenLastAddedProject(ProjectBuilder.StandartProjectData.Name)
                  .ClickTestSuitesLink()
                  .ClickAddTestSuiteButton();
 
@@ -145,8 +147,8 @@ namespace TestMonitorTesting.Tests.GUI
             "Adding of a test suite with negative value (spaces) of test suite name field.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_WithNameFieldNegativeValue()
         {
@@ -156,7 +158,7 @@ namespace TestMonitorTesting.Tests.GUI
             var createTestSuiteModalWindow = new ProjectSteps(Browser!.Driver)
                  .CreateSimpleStandartProject()
                  .Header.ClickProjectsLink()
-                 .OpenLastAddedProject(ProjectBuilder.StandartProject.Name)
+                 .OpenLastAddedProject(ProjectBuilder.StandartProjectData.Name)
                  .ClickTestSuitesLink()
                  .ClickAddTestSuiteButton();
 
@@ -173,8 +175,8 @@ namespace TestMonitorTesting.Tests.GUI
         [Test, Category("Negative"), Description("Check of overlimit test suite name field value input.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CreateTestSuite_WithNameFieldOverLimitValue()
         {
@@ -184,7 +186,7 @@ namespace TestMonitorTesting.Tests.GUI
             var createTestSuiteModalWindow = new ProjectSteps(Browser!.Driver)
                  .CreateSimpleStandartProject()
                  .Header.ClickProjectsLink()
-                 .OpenLastAddedProject(ProjectBuilder.StandartProject.Name)
+                 .OpenLastAddedProject(ProjectBuilder.StandartProjectData.Name)
                  .ClickTestSuitesLink()
                  .ClickAddTestSuiteButton();
 
@@ -195,20 +197,21 @@ namespace TestMonitorTesting.Tests.GUI
                 Is.True);
         }
 
-        [Test, Category("Positive"), Description(
+        [Test, Category("Negative"), Description(
             "(crash test) Adding of a test suite with negative space value of test suite name field.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
-        [AllureSuite("TestSuitesTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("TestSuitesGUITests")]
         [Regression]
         public void CrashTest_WithNameFieldNegativeValue()
         {
             var fakeName = FakerHelper.GetSymbolsSpecifiedRangeStringRandomValue(
                 new Random().Next(1, 100), ' ', ' ');
+
+            var newTestSuiteData = new TestSuiteData { Name = fakeName };
             var testSuitesPage =
-                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(
-                    new TestSuite() { Name = fakeName });
+                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(newTestSuiteData);
 
             Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
                 fakeName),

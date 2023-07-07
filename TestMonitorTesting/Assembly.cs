@@ -1,2 +1,2 @@
-﻿[assembly: Parallelizable(ParallelScope.All)]
-[assembly: LevelOfParallelism(4)]
+﻿//[assembly: Parallelizable(ParallelScope.All)]
+//[assembly: LevelOfParallelism(4)]

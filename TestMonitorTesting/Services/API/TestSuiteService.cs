@@ -14,9 +14,9 @@ namespace TestMonitorTesting.Services.API
 
         public RestResponse AddTestSuite(int projectId, TestSuite newTestSuite)
         {
-            newTestSuite.ProjectId = projectId;
+            newTestSuite.Data.ProjectId = projectId;
             var request = new RestRequest(AddTestSuiteEndpoint, Method.Post)
-                .AddBody(newTestSuite);
+                .AddBody(newTestSuite.Data);
 
             return ApiClient.Execute(request);
         }
@@ -24,9 +24,9 @@ namespace TestMonitorTesting.Services.API
         public TestSuiteType AddTestSuite<TestSuiteType>(int projectId, TestSuiteType newTestSuite)
             where TestSuiteType : TestSuite, new()
         {
-            newTestSuite.ProjectId = projectId;
+            newTestSuite.Data.ProjectId = projectId;
             var request = new RestRequest(AddTestSuiteEndpoint, Method.Post)
-                .AddBody(newTestSuite);
+                .AddBody(newTestSuite.Data);
 
             return ApiClient.Execute<TestSuiteType>(request);
         }

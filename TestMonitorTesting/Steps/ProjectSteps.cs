@@ -17,6 +17,6 @@ namespace TestMonitorTesting.Steps
                 .Login(Configurator.Admin!)
                 .ClickProjectsSettingsButton()
                 .ClickCreateProjectButton()
-                .CreateProject(ProjectBuilder.StandartProject);
+                .CreateProject(ProjectBuilder.StandartProjectData);
     }
 }

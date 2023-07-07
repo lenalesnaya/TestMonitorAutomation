@@ -14,9 +14,9 @@ namespace TestMonitorTesting.Services.API
 
         public RestResponse AddTestCase(int testSuiteId, TestCase newTestCase)
         {
-            newTestCase.TestSuiteId = testSuiteId;
+            newTestCase.Data.TestSuiteId = testSuiteId;
             var request = new RestRequest(AddTestCaseEndpoint, Method.Post)
-                .AddBody(newTestCase);
+                .AddBody(newTestCase.Data);
 
             return ApiClient.Execute(request);
         }
@@ -24,9 +24,9 @@ namespace TestMonitorTesting.Services.API
         public TestCaseType AddTestCase<TestCaseType>(int testSuiteId, TestCaseType newTestCase)
             where TestCaseType : TestCase, new()
         {
-            newTestCase.TestSuiteId = testSuiteId;
+            newTestCase.Data.TestSuiteId = testSuiteId;
             var request = new RestRequest(AddTestCaseEndpoint, Method.Post)
-                .AddBody(newTestCase);
+                .AddBody(newTestCase.Data);
 
             return ApiClient.Execute<TestCaseType>(request);
         }
@@ -34,7 +34,7 @@ namespace TestMonitorTesting.Services.API
         public RestResponse GetTestCase(int testCaseId)
         {
             var request = new RestRequest(GetTestCaseEndpoint)
-                .AddUrlSegment("testSuiteId", testCaseId);
+                .AddUrlSegment("testCaseId", testCaseId);
             return ApiClient.Execute(request);
         }
 
@@ -42,7 +42,7 @@ namespace TestMonitorTesting.Services.API
             where TestCaseType : TestCase, new()
         {
             var request = new RestRequest(GetTestCaseEndpoint)
-                .AddUrlSegment("testSuiteId", testCaseId);
+                .AddUrlSegment("testCaseId", testCaseId);
 
             return ApiClient.Execute<TestCaseType>(request);
         }

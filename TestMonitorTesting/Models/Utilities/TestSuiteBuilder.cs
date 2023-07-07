@@ -4,34 +4,34 @@ namespace TestMonitorTesting.Models.Utilities
 {
     internal class TestSuiteBuilder
     {
-        private TestSuite _testSuite;
+        private TestSuiteData _testSuiteData;
 
         public TestSuiteBuilder()
         {
-            _testSuite = new TestSuite();
+            _testSuiteData = new TestSuiteData();
         }
 
-        public static TestSuite StandartTestSuite =>
-            TestDataHelper.GetTestEntity<TestSuite>("StandartTestSuite");
+        public static TestSuiteData StandartTestSuiteData =>
+            TestDataHelper.GetTestEntity<TestSuiteData>("StandartTestSuite");
 
 
-        public static TestSuite GetStandartTestSuite(int projectId)
+        public static TestSuiteData GetStandartTestSuiteData(int projectId)
         {
-            var suite = StandartTestSuite;
-            suite.ProjectId = projectId;
+            var suiteData = StandartTestSuiteData;
+            suiteData.ProjectId = projectId;
 
-            return suite;
+            return suiteData;
         }
 
-        public static TestSuite RandomTestSuite => new()
+        public static TestSuiteData RandomTestSuiteData => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
             Description = FakerHelper.Faker.Lorem.Sentences(),
         };
 
-        public static TestSuite GetRandomTestSuite(int projectId)
+        public static TestSuiteData GetRandomTestSuiteData(int projectId)
         {
-            var testSuite = RandomTestSuite;
+            var testSuite = RandomTestSuiteData;
             testSuite.ProjectId = projectId;
 
             return testSuite;
@@ -39,28 +39,28 @@ namespace TestMonitorTesting.Models.Utilities
 
         public TestSuiteBuilder SetName(string name)
         {
-            _testSuite.Name = name;
+            _testSuiteData.Name = name;
 
             return this;
         }
 
         public TestSuiteBuilder SetDescription(string description)
         {
-            _testSuite.Description = description;
+            _testSuiteData.Description = description;
 
             return this;
         }
 
         public TestSuiteBuilder SetProjectId(int projectId)
         {
-            _testSuite.ProjectId = projectId;
+            _testSuiteData.ProjectId = projectId;
 
             return this;
         }
 
         public TestSuite Build()
         {
-            return _testSuite;
+            return new TestSuite() { Data = _testSuiteData };
         }
     }
 }

@@ -15,8 +15,8 @@ namespace TestMonitorTesting.Tests.GUI
         [Test, Category("Positive"), Description("Upload an avatar")]
         [AllureSeverity(SeverityLevel.critical)]
         [AllureOwner("Any user")]
-        [AllureSuite("AccountTests")]
-        [AllureSubSuite("GUI")]
+        [AllureSuite("GUI")]
+        [AllureSubSuite("AccountGUITests")]
         [Regression]
         public void CreateTestSuite_WithStandartData()
         {

@@ -15,7 +15,7 @@ namespace Core.Clients
             var options = new RestClientOptions(Configurator.AppSettings.URL!)
             {
                 Authenticator = new JwtAuthenticator(Configurator.Admin!.JWT!),
-                ThrowOnAnyError = true,
+                ThrowOnAnyError = false,
                 MaxTimeout = 10000,
             };
 
