@@ -196,7 +196,7 @@ namespace TestMonitorTesting.Tests.GUI
         }
 
         [Test, Category("Positive"), Description(
-            "Adding of a test suite with positive high limit values of test suite name field.")]
+            "(crash test) Adding of a test suite with negative space value of test suite name field.")]
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("Any user")]
         [AllureSuite("TestSuitesTests")]
