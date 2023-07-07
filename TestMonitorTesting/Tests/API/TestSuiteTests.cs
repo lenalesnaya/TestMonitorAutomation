@@ -20,10 +20,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Adding of a test suite with random values.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("TestSuiteTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void AddTestSuite()
         {
@@ -37,10 +33,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Getting of recently added test suite.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("TestSuiteTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void GetTestSuite()
         {
@@ -55,10 +47,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Negative"), Description("Getting of an unexisted test suite.")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureOwner("Any user")]
-        [AllureSuite("TestSuiteTests")]
-        [AllureSubSuite("API")]
         [Regression]
         public void GetUnexistedTestSuite()
         {
@@ -82,11 +70,11 @@ namespace TestMonitorTesting.Tests.API
 
         public TestSuite? HandleTestSuiteAdding(TestSuite newTestSuite)
         {
-            var addedProject = new ProjectTests().HandleProjectAdding(
-                ProjectBuilder.StandartProject);
+            //var addedProject = new ProjectTests().HandleProjectAdding(
+            //    ProjectBuilder.StandartProject);
 
             return _testSuiteService.AddTestSuite<TestSuite>(
-                addedProject!.Id, newTestSuite);
+                41, newTestSuite);
         }
     }
 }

@@ -20,10 +20,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Adding of a test case with random values.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("TestCaseTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void AddTestCase()
         {
@@ -37,10 +33,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Getting of recently added test case.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("TestCaseTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void GetTestCase()
         {

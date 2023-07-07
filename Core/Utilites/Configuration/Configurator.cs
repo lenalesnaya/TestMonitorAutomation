@@ -44,7 +44,6 @@ namespace Core.Utilites.Configuration
             }
         }
 
-
         public static List<User?> Users
         {
             get

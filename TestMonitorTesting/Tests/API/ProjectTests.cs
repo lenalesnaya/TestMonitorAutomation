@@ -20,10 +20,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Adding of a project with random values.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("ProjectTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void AddProject()
         {
@@ -37,10 +33,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Getting of recently added project.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("ProjectTests")]
-        [AllureSubSuite("API")]
         [SmokeTest]
         public void GetProject()
         {
@@ -55,10 +47,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Negative"), Description("Getting of an unexisted project.")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureOwner("Any user")]
-        [AllureSuite("ProjectTests")]
-        [AllureSubSuite("API")]
         [Regression]
         public void GetUnexistedProject()
         {
