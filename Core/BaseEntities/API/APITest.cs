@@ -3,7 +3,7 @@ using Core.Clients;
 
 namespace Core.BaseEntities.API
 {
-    internal class APITest
+    public class APITest
     {
         protected static readonly Logger Logger = LogManager.GetCurrentClassLogger();
         protected ApiClient ApiClient;

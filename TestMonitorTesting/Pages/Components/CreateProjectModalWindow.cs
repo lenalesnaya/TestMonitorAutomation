@@ -58,7 +58,7 @@ namespace TestMonitorTesting.Pages.Components
             return new ProjectsSettingsPage(Driver);
         }
 
-        public ProjectsSettingsPage CreateProject(Project project) =>
+        public ProjectsSettingsPage CreateProject(ProjectData project) =>
             SetProjectName(project.Name)
             .ClickFeaturesButton()
             .ClickTemplateButton()

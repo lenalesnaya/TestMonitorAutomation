@@ -14,9 +14,8 @@ namespace Core.Clients
         {
             var options = new RestClientOptions(Configurator.AppSettings.URL!)
             {
-                Authenticator = new HttpBasicAuthenticator(
-                    Configurator.Admin!.Username!, Configurator.Admin.Password!),
-                ThrowOnAnyError = true,
+                Authenticator = new JwtAuthenticator(Configurator.Admin!.JWT!),
+                ThrowOnAnyError = false,
                 MaxTimeout = 10000,
             };
 

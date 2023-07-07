@@ -4,26 +4,26 @@ namespace TestMonitorTesting.Models.Utilities
 {
     internal class TestCaseBuilder
     {
-        private TestCase _testCase;
+        private CaseData _testCaseData;
 
         public TestCaseBuilder()
         {
-            _testCase = new TestCase();
+            _testCaseData = new CaseData();
         }
 
-        public static TestCase StandartTestCase =>
-            TestDataHelper.GetTestEntity<TestCase>("StandartTestCase");
+        public static CaseData StandartTestCaseData =>
+            TestDataHelper.GetTestEntity<CaseData>("StandartTestCase");
 
 
-        public static TestCase GetStandartTestCase(int testSuiteId)
+        public static CaseData GetStandartTestCaseData(int testSuiteId)
         {
-            var testCase = StandartTestCase;
+            var testCase = StandartTestCaseData;
             testCase.TestSuiteId = testSuiteId;
 
             return testCase;
         }
 
-        public static TestCase RandomTestCase => new()
+        public static CaseData RandomTestCaseData => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
             Duration = new Random().Next(1, 60),
@@ -33,9 +33,9 @@ namespace TestMonitorTesting.Models.Utilities
             Instructions = GetInstructions()
         };
 
-        public static TestCase GetRandomTestCase(int testSuiteId)
+        public static CaseData GetRandomTestCase(int testSuiteId)
         {
-            var testCase = RandomTestCase;
+            var testCase = RandomTestCaseData;
             testCase.TestSuiteId = testSuiteId;
 
             return testCase;
@@ -56,63 +56,63 @@ namespace TestMonitorTesting.Models.Utilities
 
         public TestCaseBuilder SetTestSuiteId(int testSuiteId)
         {
-            _testCase.TestSuiteId = testSuiteId;
+            _testCaseData.TestSuiteId = testSuiteId;
 
             return this;
         }
 
         public TestCaseBuilder SetName(string name)
         {
-            _testCase.Name = name;
+            _testCaseData.Name = name;
 
             return this;
         }
 
         public TestCaseBuilder SetDuration(int duration)
         {
-            _testCase.Duration = duration;
+            _testCaseData.Duration = duration;
 
             return this;
         }
 
         public TestCaseBuilder SetDraft(bool draft)
         {
-            _testCase.Draft = draft;
+            _testCaseData.Draft = draft;
 
             return this;
         }
 
         public TestCaseBuilder SetExpectedResult(string expectedResult)
         {
-            _testCase.ExpectedResult = expectedResult;
+            _testCaseData.ExpectedResult = expectedResult;
 
             return this;
         }
 
         public TestCaseBuilder SetTestData(string testData)
         {
-            _testCase.TestData = testData;
+            _testCaseData.TestData = testData;
 
             return this;
         }
 
         public TestCaseBuilder SetPreconditions(string preconditions)
         {
-            _testCase.Preconditions = preconditions;
+            _testCaseData.Preconditions = preconditions;
 
             return this;
         }
 
         public TestCaseBuilder SetInstructions(List<string> instructions)
         {
-            _testCase.Instructions = instructions;
+            _testCaseData.Instructions = instructions;
 
             return this;
         }
 
         public TestCase Build()
         {
-            return _testCase;
+            return new TestCase() { Data = _testCaseData };
         }
     }
 }

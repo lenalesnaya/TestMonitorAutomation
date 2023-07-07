@@ -2,7 +2,7 @@
 
 namespace Core.BaseEntities.API
 {
-    internal class APIService
+    public class APIService
     {
         protected ApiClient ApiClient;
 

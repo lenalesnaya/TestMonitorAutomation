@@ -18,12 +18,12 @@ Negative
 API
 -Get-
 Positive
-1. Retrieve a list of projects
-2. Retrieve a list of test cases
+1. Retrieve a single project
+2. Retrieve a single test suite
 3. Retrieve a single test case
 Negative
 1. Retrieve an unexisting project
-2. Retrieve an unexisting test case
+2. Retrieve an unexisting test suite
 -Post-(variants)
 Create a project
 Create a test suite

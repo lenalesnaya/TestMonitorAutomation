@@ -20,11 +20,6 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\API\" />
-    <Folder Include="Tests\API\" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<None Remove="appsettings.json" />
 		<Content Include="appsettings.json">

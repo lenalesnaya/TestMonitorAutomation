@@ -65,9 +65,9 @@ namespace TestMonitorTesting.Pages.Components
             return new TestSuitesPage(Driver);
         }
 
-        public TestSuitesPage CreateTestSuite(TestSuite testSuite) =>
-            SetSuiteName(testSuite.Name)
-            .SetSuiteDescription(testSuite.Description!)
+        public TestSuitesPage CreateTestSuite(TestSuiteData testSuiteData) =>
+            SetSuiteName(testSuiteData.Name)
+            .SetSuiteDescription(testSuiteData.Description!)
             .ClickAddButton();
     }
 }
