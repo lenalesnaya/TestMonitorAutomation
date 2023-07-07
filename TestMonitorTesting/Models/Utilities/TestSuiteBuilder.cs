@@ -11,20 +11,31 @@ namespace TestMonitorTesting.Models.Utilities
             _testSuite = new TestSuite();
         }
 
+        public static TestSuite StandartTestSuite =>
+            TestDataHelper.GetTestEntity<TestSuite>("StandartTestSuite");
+
+
         public static TestSuite GetStandartTestSuite(int projectId)
         {
-            var suite = TestDataHelper.GetTestEntity<TestSuite>("StandartTestSuite");
+            var suite = StandartTestSuite;
             suite.ProjectId = projectId;
 
             return suite;
         }
 
-        public static TestSuite GetRandomTestSuite(int projectId) => new()
+        public static TestSuite RandomTestSuite => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
             Description = FakerHelper.Faker.Lorem.Sentences(),
-            ProjectId = projectId
         };
+
+        public static TestSuite GetRandomTestSuite(int projectId)
+        {
+            var testSuite = RandomTestSuite;
+            testSuite.ProjectId = projectId;
+
+            return testSuite;
+        }
 
         public TestSuiteBuilder SetName(string name)
         {

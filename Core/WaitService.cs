@@ -27,6 +27,30 @@ namespace Core
             }
         }
 
+        public IWebElement GetExistingElement(By by)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementExists(by));
+            }
+            catch (Exception e)
+            {
+                throw new AssertionException(e.Message, e);
+            }
+        }
+
+        public IWebElement GetClickableElement(IWebElement webElement)
+        {
+            try
+            {
+                return _wait.Until(ExpectedConditions.ElementToBeClickable(webElement));
+            }
+            catch (Exception e)
+            {
+                throw new AssertionException(e.Message, e);
+            }
+        }
+
         public IWebElement GetVisibleElementByFluentWait(By by)
         {
             var fluentWait = new DefaultWait<IWebDriver?>(Driver);

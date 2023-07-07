@@ -7,12 +7,22 @@ namespace TestMonitorTesting.Wrappers
     {
         private UIElement _uiElement;
 
+        public string Text => _uiElement.Text;
+        public bool Displayed => _uiElement.Displayed;
+        public bool Selected => _uiElement.Selected;
+        public bool Enabled => _uiElement.Enabled;
+
         public Checkbox(IWebDriver? driver, By @by)
         {
             _uiElement = new UIElement(driver, @by);
         }
 
-        public void Click() => _uiElement.Click();
+        public Checkbox(IWebDriver? driver, IWebElement webElement)
+        {
+            _uiElement = new UIElement(driver, webElement);
+        }
+
+        public void Click() => _uiElement.ExecuteScript("arguments[0].click();");
 
         public void Select()
         {
@@ -25,13 +35,5 @@ namespace TestMonitorTesting.Wrappers
             if (Selected)
                 Click();
         }
-
-        public string Text => _uiElement.Text;
-
-        public bool Displayed => _uiElement.Displayed;
-
-        public bool Selected => _uiElement.Selected;
-
-        public bool Enabled => _uiElement.Enabled;
     }
 }
