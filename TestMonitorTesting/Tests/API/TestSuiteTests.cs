@@ -22,10 +22,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Adding of a test suite with random values.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("API")]
-        [AllureSubSuite("TestSuiteAPITests")]
         [SmokeTest]
         public void AddTestSuite()
         {
@@ -41,10 +37,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Positive"), Description("Getting of recently added test suite.")]
-        [AllureSeverity(SeverityLevel.critical)]
-        [AllureOwner("Any user")]
-        [AllureSuite("API")]
-        [AllureSubSuite("TestSuiteAPITests")]
         [SmokeTest]
         public void GetTestSuite()
         {
@@ -61,10 +53,6 @@ namespace TestMonitorTesting.Tests.API
         }
 
         [Test, Category("Negative"), Description("Getting of an unexisted test suite.")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureOwner("Any user")]
-        [AllureSuite("API")]
-        [AllureSubSuite("TestSuiteAPITests")]
         [Regression]
         public void GetUnexistedTestSuite()
         {
