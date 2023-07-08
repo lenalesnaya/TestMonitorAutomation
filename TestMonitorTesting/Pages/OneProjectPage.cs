@@ -5,8 +5,9 @@ namespace TestMonitorTesting.Pages
 {
     internal class OneProjectPage : Page
     {
-        private static readonly By TestSuitesLinkBy = By.CssSelector("a[href$='design/test-suites']");
         protected override string EndPoint => "/test-p";
+
+        private static readonly By TestSuitesLinkBy = By.CssSelector("a[href$='design/test-suites']");
 
         public UIElement TestSuitesLink => new(Driver, TestSuitesLinkBy);
 

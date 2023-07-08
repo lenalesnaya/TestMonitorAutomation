@@ -7,12 +7,12 @@ namespace TestMonitorTesting.Pages
 {
     internal class ProjectsSettingsPage : Page
     {
+        protected override string EndPoint => "/settings/projects";
+
         public readonly Header Header;
 
         private static readonly By SettingsTitleBy = By.XPath("//*[@class='title' and text()='Settings']");
         private static readonly By CreateProjectButtonBy = By.XPath("//button[contains(text(), 'Create project')]");
-
-        protected override string EndPoint => "/settings/projects";
 
         public UIElement SettingsTitle => new(Driver, SettingsTitleBy);
         public Button CreateProjectButton => new(Driver, CreateProjectButtonBy);

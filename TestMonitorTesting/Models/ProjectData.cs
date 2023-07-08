@@ -53,8 +53,6 @@ namespace TestMonitorTesting.Models
         [JsonPropertyName("completed")]
         public bool Completed { get; set; }
 
-        //public string? AdditionalProperty { get; set; }
-
         public override string ToString() =>
                 $"{nameof(Id)}: {Id} // " +
                 $"{nameof(Name)}: {Name} // " +

@@ -39,7 +39,7 @@ namespace TestMonitorTesting.Tests.GUI
         [SmokeTest]
         public void DeleteTestSuite()
         {
-            var randomTestSuiteData = TestSuiteBuilder.RandomTestSuiteData;
+            var randomTestSuiteData = TestSuiteBuilder.GenerateRandomTestSuiteData();
             var testSuitesPage =
                 new TestSuiteSteps(Browser!.Driver).CreateTestSuite(randomTestSuiteData);
 
@@ -49,17 +49,17 @@ namespace TestMonitorTesting.Tests.GUI
             try
             {
                 testSuitesPage.GetLastAddedTestSuiteLink(randomTestSuiteData.Name);
-                Assert.That(false);
+                Assert.Fail();
             }
             catch (NoSuchElementException ex)
             {
                 Logger.Info(ex.Message);
-                Assert.That(true);
+                Assert.Pass();
             }
             catch (Exception ex)
             {
                 Logger.Info(ex.Message);
-                Assert.That(false);
+                Assert.Fail();
             }
         }
 

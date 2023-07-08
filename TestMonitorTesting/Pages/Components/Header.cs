@@ -48,7 +48,6 @@ namespace TestMonitorTesting.Pages.Components
             return new AccountPage(Driver);
         }
 
-
         public AccountPage OpenAccountPage() =>
             ClickNavbarLink()
             .ClickMyAccountItem();

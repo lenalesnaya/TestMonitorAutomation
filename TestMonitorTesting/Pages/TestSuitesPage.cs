@@ -7,6 +7,8 @@ namespace TestMonitorTesting.Pages
 {
     internal class TestSuitesPage : Page
     {
+        protected override string EndPoint => "/test-suites";
+
         private static readonly string AddedTestSuiteTitleLocatorTemplate = "//td[@data-label='Name']//a[text()='{0}']";
 
         private static readonly By AddTestSuiteButtonBy = By.XPath("//button[contains(text(), 'Add Test Suite')]");
@@ -20,8 +22,6 @@ namespace TestMonitorTesting.Pages
         public TestSuitesPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl) { }
 
         public TestSuitesPage(IWebDriver? driver) : base(driver, false) { }
-
-        protected override string EndPoint => "/test-suites";
 
         public override bool IsPageOpened()
         {

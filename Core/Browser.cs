@@ -18,7 +18,7 @@ namespace Core
 
             Driver?.Manage().Window.Maximize();
             Driver?.Manage().Cookies.DeleteAllCookies();
-            if (Driver != null) Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
+            Driver!.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
         }
 
         public static object? ExecuteScript(IWebDriver driver, string script)

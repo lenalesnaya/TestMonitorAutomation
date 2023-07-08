@@ -7,6 +7,8 @@ namespace TestMonitorTesting.Pages
 {
     internal class LoginPage : Page
     {
+        protected override string EndPoint => "";
+
         private static readonly By EmailInputBy = By.Id("email");
         private static readonly By PasswordInputBy = By.Id("password");
         private static readonly By LoginButtonBy = By.XPath("//button[contains(text(), 'Login')]");
@@ -19,8 +21,6 @@ namespace TestMonitorTesting.Pages
         public LoginPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl) { }
 
         public LoginPage(IWebDriver? driver) : base(driver, false) { }
-
-        protected override string EndPoint => "";
 
         public override bool IsPageOpened()
         {

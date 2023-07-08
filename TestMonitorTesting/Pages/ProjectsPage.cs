@@ -7,8 +7,11 @@ namespace TestMonitorTesting.Pages
 {
     internal class ProjectsPage : Page
     {
+        protected override string EndPoint => "/my-projects";
+
         public readonly Header Header;
         public readonly ProjectCard ProjectCard;
+
         private static readonly By PaginationNextButtonBy = By.CssSelector(".pagination-link.pagination-next");
         private static readonly By ProjectsTitleBy = By.XPath("//*[@class='title' and text()='Projects']");
         private static readonly By ProjectsSettingsButtonBy = By.CssSelector("a[href$='settings/projects']");
@@ -16,8 +19,6 @@ namespace TestMonitorTesting.Pages
         public UIElement ProjectsTitle => new(Driver, ProjectsTitleBy);
         public Button PaginationNextButton => new(Driver, PaginationNextButtonBy);
         public Button ProjectsSettingsButton => new(Driver, ProjectsSettingsButtonBy);
-
-        protected override string EndPoint => "/my-projects";
 
         public ProjectsPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl)
         {

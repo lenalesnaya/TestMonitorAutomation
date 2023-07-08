@@ -1,14 +1,14 @@
-﻿using Core.BaseEntities.API;
-using Core.Clients;
+﻿using Core.Clients;
 using RestSharp;
 using TestMonitorTesting.Models;
+using TestMonitorTesting.Services.API.Base;
 
 namespace TestMonitorTesting.Services.API
 {
-    internal class ProjectService : APIService
+    internal class ProjectService : TestmonitorApiService
     {
-        public const string AddProjectEndpoint = "api/v1/projects";
-        public const string GetProjectEndpoint = "api/v1/projects/{projectId}";
+        public readonly string AddProjectEndpoint = BaseEndpoint + "projects";
+        public const string GetProjectEndpoint = BaseEndpoint + "projects/{projectId}";
 
         public ProjectService(ApiClient apiClient) : base(apiClient) { }
 
