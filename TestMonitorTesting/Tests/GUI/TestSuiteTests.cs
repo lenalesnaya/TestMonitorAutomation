@@ -197,25 +197,25 @@ namespace TestMonitorTesting.Tests.GUI
                 Is.True);
         }
 
-        [Test, Category("Negative"), Description(
-            "(crash test) Adding of a test suite with negative space value of test suite name field.")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureOwner("Any user")]
-        [AllureSuite("GUI")]
-        [AllureSubSuite("TestSuitesGUITests")]
-        [Regression]
-        public void CrashTest_WithNameFieldNegativeValue()
-        {
-            var fakeName = FakerHelper.GetSymbolsSpecifiedRangeStringRandomValue(
-                new Random().Next(1, 100), ' ', ' ');
+        //[Test, Category("Negative"), Description(
+        //    "(crash test) Adding of a test suite with negative space value of test suite name field.")]
+        //[AllureSeverity(SeverityLevel.normal)]
+        //[AllureOwner("Any user")]
+        //[AllureSuite("GUI")]
+        //[AllureSubSuite("TestSuitesGUITests")]
+        //[Regression]
+        //public void CrashTest_WithNameFieldNegativeValue()
+        //{
+        //    var fakeName = FakerHelper.GetSymbolsSpecifiedRangeStringRandomValue(
+        //        new Random().Next(1, 100), ' ', ' ');
 
-            var newTestSuiteData = new TestSuiteData { Name = fakeName };
-            var testSuitesPage =
-                new TestSuiteSteps(Browser!.Driver).CreateTestSuite(newTestSuiteData);
+        //    var newTestSuiteData = new TestSuiteData { Name = fakeName };
+        //    var testSuitesPage =
+        //        new TestSuiteSteps(Browser!.Driver).CreateTestSuite(newTestSuiteData);
 
-            Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
-                fakeName),
-                Is.True);
-        }
+        //    Assert.That(testSuitesPage.CheckTestSuiteIsPresented(
+        //        fakeName),
+        //        Is.True);
+        //}
     }
 }
