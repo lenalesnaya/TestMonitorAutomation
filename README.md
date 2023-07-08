@@ -13,7 +13,7 @@ Positive
 Negative
 1. Check of entering incorrect data (only 1-100 spaces) into test case suite "Name" field.
 2. Check of entering data that exceeds the limit values (0 and 101 symbols) into test case suite "Name" field.
-3. Try to add test suite, using wrong locator.
+3. (crash test) Adding of a test suite with negative space value of test suite name field.
 
 API
 -Get-
@@ -24,7 +24,7 @@ Positive
 Negative
 1. Retrieve an unexisting project
 2. Retrieve an unexisting test suite
--Post-(variants)
-Create a project
-Create a test suite
-Create a test case
+-Post-
+1. Create a project
+2. Create a test suite
+3. Create a test case
