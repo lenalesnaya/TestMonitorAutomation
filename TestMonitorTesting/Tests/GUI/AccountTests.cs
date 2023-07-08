@@ -18,7 +18,7 @@ namespace TestMonitorTesting.Tests.GUI
         [AllureSuite("GUI")]
         [AllureSubSuite("AccountGUITests")]
         [Regression]
-        public void CreateTestSuite_WithStandartData()
+        public void ChangeAvatar()
         {
             var accountPage = new LoginPage(Browser!.Driver, true)
                 .Login(Configurator.Admin!)
