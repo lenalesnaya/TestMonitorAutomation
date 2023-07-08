@@ -1,0 +1,13 @@
+{
+  "name": "Good project.",
+  "description": "Standart description.",
+  "symbol_id": 1,
+  "starts_at": "2024-07-07",
+  "ends_at": "2025-07-07",
+  "uses_applications": true,
+  "uses_requirements": true,
+  "uses_risks": true,
+  "uses_issues": true,
+  "uses_messages": true,
+  "completed": true
+}
