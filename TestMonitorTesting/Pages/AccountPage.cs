@@ -1,13 +1,13 @@
-﻿using Core;
-using Core.BaseEntities.GUI;
+﻿using Core.BaseEntities.GUI;
 using OpenQA.Selenium;
 using System.Reflection;
-using TestMonitorTesting.Wrappers;
 
 namespace TestMonitorTesting.Pages
 {
     internal class AccountPage : Page
     {
+        protected override string EndPoint => "/my-account";
+
         private static readonly By AvatarComponentBy = By.ClassName("avatar-component");
         private static readonly By AvatarBy = By.CssSelector("img.is-rounded");
         private static readonly By ImageUploaderBy = By.XPath("//input[@type='file']");
@@ -16,8 +16,6 @@ namespace TestMonitorTesting.Pages
         public UIElement Avatar => new(Driver, AvatarComponent.FindElement(AvatarBy));
 
         public UIElement ImageUploader = new (Driver, ImageUploaderBy);
-
-        protected override string EndPoint => "/my-account";
 
         public AccountPage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl) { }
 

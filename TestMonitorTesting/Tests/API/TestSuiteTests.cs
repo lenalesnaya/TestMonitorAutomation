@@ -1,6 +1,4 @@
-﻿using Allure.Commons;
-using Core.BaseEntities.API;
-using NUnit.Allure.Attributes;
+﻿using Core.BaseEntities.API;
 using SaucedemoTests;
 using TestMonitorTesting.Models;
 using TestMonitorTesting.Models.Utilities;
@@ -26,7 +24,7 @@ namespace TestMonitorTesting.Tests.API
         public void AddTestSuite()
         {
             var newTestSuite = new TestSuite()
-            { Data = TestSuiteBuilder.RandomTestSuiteData };
+            { Data = TestSuiteBuilder.GenerateRandomTestSuiteData() };
 
             var addedTestSuite = HandleTestSuiteAdding(newTestSuite);
 

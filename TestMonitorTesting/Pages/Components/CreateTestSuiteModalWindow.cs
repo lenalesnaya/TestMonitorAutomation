@@ -13,8 +13,8 @@ namespace TestMonitorTesting.Pages.Components
         public static readonly By WindowBy = By.ClassName("modal-card");
         public static readonly By WindowTitleBy =
             By.XPath("//*[@class='modal-card-title' and text()='Add Test Suite']");
-        public static readonly By TestSuiteNameInputBy = By.CssSelector("input[name='name']");
-        public static readonly By TestSuiteDescriptionInputBy = By.CssSelector("textarea[name='description']");
+        public static readonly By TestSuiteNameInputBy = By.Name("name");
+        public static readonly By TestSuiteDescriptionInputBy = By.Name("description");
         public static readonly By AddButtonBy = By.CssSelector(".button.is-success");
         public static readonly By CancelButtonBy = By.CssSelector(".button.is-white");
         public static readonly By DangerMessageBy = By.CssSelector(".help.is-danger");

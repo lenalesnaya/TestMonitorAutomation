@@ -14,16 +14,7 @@ namespace TestMonitorTesting.Models.Utilities
         public static CaseData StandartTestCaseData =>
             TestDataHelper.GetTestEntity<CaseData>("StandartTestCase");
 
-
-        public static CaseData GetStandartTestCaseData(int testSuiteId)
-        {
-            var testCase = StandartTestCaseData;
-            testCase.TestSuiteId = testSuiteId;
-
-            return testCase;
-        }
-
-        public static CaseData RandomTestCaseData => new()
+        public static CaseData GenerateRandomTestCaseData() => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
             Duration = new Random().Next(1, 60),
@@ -32,14 +23,6 @@ namespace TestMonitorTesting.Models.Utilities
             Preconditions = FakerHelper.Faker.Lorem.Sentences(),
             Instructions = GetInstructions()
         };
-
-        public static CaseData GetRandomTestCase(int testSuiteId)
-        {
-            var testCase = RandomTestCaseData;
-            testCase.TestSuiteId = testSuiteId;
-
-            return testCase;
-        }
 
         private static List<string> GetInstructions()
         {

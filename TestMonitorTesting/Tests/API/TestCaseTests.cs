@@ -28,7 +28,7 @@ namespace TestMonitorTesting.Tests.API
         public void AddTestCase()
         {
             var newTestCase = new TestCase()
-            { Data = TestCaseBuilder.RandomTestCaseData };
+            { Data = TestCaseBuilder.GenerateRandomTestCaseData() };
 
             var addedTestCase = HandleTestCaseAdding(newTestCase);
 

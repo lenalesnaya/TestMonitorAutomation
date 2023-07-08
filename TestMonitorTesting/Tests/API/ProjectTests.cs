@@ -1,6 +1,4 @@
-﻿using Allure.Commons;
-using Core.BaseEntities.API;
-using NUnit.Allure.Attributes;
+﻿using Core.BaseEntities.API;
 using SaucedemoTests;
 using TestMonitorTesting.Models;
 using TestMonitorTesting.Models.Utilities;
@@ -24,7 +22,7 @@ namespace TestMonitorTesting.Tests.API
         public void AddProject()
         {
             var newProject = new Project()
-            {Data = ProjectBuilder.GetRandomProjectData() };
+            {Data = ProjectBuilder.GenerateRandomProjectData() };
 
             var addedProject = HandleProjectAdding(newProject);
 

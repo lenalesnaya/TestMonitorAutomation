@@ -6,6 +6,8 @@ namespace TestMonitorTesting.Pages
 {
     internal class OneTestSuitePage : Page
     {
+        protected override string EndPoint => throw new NotImplementedException();
+
         private static readonly By DropdownButtonBy = By.ClassName("dropdown-trigger");
         private static readonly By DeleteTestSuiteItemBy = By.XPath(
             "//a[@class='dropdown-item']//*[contains(text(), 'Delete')]");
@@ -16,10 +18,6 @@ namespace TestMonitorTesting.Pages
         public UIElement DeleteTestSuiteItem => new(Driver, DeleteTestSuiteItemBy);
         public Checkbox DeleteCheckbox => new(Driver, Driver!.FindElement(DeleteCheckboxBy));
         public Button DeleteButton => new(Driver, DeleteButtonBy);
-
-        protected override string EndPoint => throw new NotImplementedException();
-
-        public OneTestSuitePage(IWebDriver? driver, bool openPageByUrl) : base(driver, openPageByUrl) { }
 
         public OneTestSuitePage(IWebDriver? driver) : base(driver, false) { }
 

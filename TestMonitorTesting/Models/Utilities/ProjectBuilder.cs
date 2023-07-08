@@ -1,4 +1,5 @@
-﻿using Core.Utilites.Helpers;
+﻿using Core.Utilites.Configuration;
+using Core.Utilites.Helpers;
 
 namespace TestMonitorTesting.Models.Utilities
 {
@@ -14,12 +15,12 @@ namespace TestMonitorTesting.Models.Utilities
         public static ProjectData StandartProjectData =>
             TestDataHelper.GetTestEntity<ProjectData>("StandartProject");
 
-        public static ProjectData GetRandomProjectData() => new()
+        public static ProjectData GenerateRandomProjectData() => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " project.",
             Description = FakerHelper.Faker.Lorem.Sentences(),
-            StartsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString("yyyy-MM-dd"),
-            EndsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString("yyyy-MM-dd"),
+            StartsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString(Configurator.Configuration["DateFormat"]),
+            EndsAt = FakerHelper.Faker.Date.FutureDateOnly().ToString(Configurator.Configuration["DateFormat"]),
             SymbolId = 1
         };
 

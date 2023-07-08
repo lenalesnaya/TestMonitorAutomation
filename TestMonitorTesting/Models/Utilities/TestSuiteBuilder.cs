@@ -14,28 +14,11 @@ namespace TestMonitorTesting.Models.Utilities
         public static TestSuiteData StandartTestSuiteData =>
             TestDataHelper.GetTestEntity<TestSuiteData>("StandartTestSuite");
 
-
-        public static TestSuiteData GetStandartTestSuiteData(int projectId)
-        {
-            var suiteData = StandartTestSuiteData;
-            suiteData.ProjectId = projectId;
-
-            return suiteData;
-        }
-
-        public static TestSuiteData RandomTestSuiteData => new()
+        public static TestSuiteData GenerateRandomTestSuiteData() => new()
         {
             Name = FakerHelper.Faker.Lorem.Word() + " test suite.",
             Description = FakerHelper.Faker.Lorem.Sentences(),
         };
-
-        public static TestSuiteData GetRandomTestSuiteData(int projectId)
-        {
-            var testSuite = RandomTestSuiteData;
-            testSuite.ProjectId = projectId;
-
-            return testSuite;
-        }
 
         public TestSuiteBuilder SetName(string name)
         {

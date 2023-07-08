@@ -1,5 +1,4 @@
-﻿using AngleSharp.Dom;
-using Core.BaseEntities.GUI;
+﻿using Core.BaseEntities.GUI;
 using OpenQA.Selenium;
 
 namespace TestMonitorTesting.Wrappers
