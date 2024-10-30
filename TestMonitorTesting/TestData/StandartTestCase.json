@@ -1,0 +1,13 @@
+{
+  "name": "Standart test case.",
+  "duration": 50,
+  "draft": true,
+  "expected_result": "All is good.",
+  "test_data": "Good data",
+  "preconditions": "Authorized.",
+  "instructions": [
+    "Do this.",
+    "Do that.",
+    "Do something else."
+  ]
+}
